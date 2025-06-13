@@ -1,0 +1,5 @@
+package com.currencyService.CurrencyRepository;
+
+public interface CurrencyRepository {
+
+}

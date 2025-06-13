@@ -1,0 +1,15 @@
+spring.application.name=serviceCurrency
+server.port=8084
+spring.datasource.url = jdbc:h2:mem:testdb
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=sushi@1234
+# Hibernate Dialect
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+# Enable H2 Console (for in-browser access)
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+# JPA Properties
+spring.jpa.hibernate.ddl-auto=update  
+# or create-drop (for dev)
+spring.jpa.show-sql=true

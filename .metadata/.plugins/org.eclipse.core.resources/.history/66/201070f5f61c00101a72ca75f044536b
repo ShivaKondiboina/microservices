@@ -1,0 +1,9 @@
+package com.currencyService.CurrencyRepository;
+
+import com.currencyService.CurrencyDetails.CurrencyDetails;
+
+public interface CurrencyRepository {
+
+	CurrencyDetails save(CurrencyDetails currencyDetails);
+
+}

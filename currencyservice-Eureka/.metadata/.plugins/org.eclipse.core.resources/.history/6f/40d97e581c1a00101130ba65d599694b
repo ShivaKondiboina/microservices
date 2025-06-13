@@ -1,0 +1,28 @@
+package com.sivaKondiboina.currencyController;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.sivaKondiboina.Currencydetails.CurrencyDetails;
+import com.sivaKondiboina.currencyservice.currencyService;
+import com.sivaKondiboina.requestCurrency.CurrencyRequest;
+
+@RestController
+@RequestMapping("/api/v1")
+public class CurrencyController {
+
+  @Autowired
+  currencyService currencyService;
+   
+
+    @PostMapping("/currency")
+    public ResponseEntity<?> getCurrencyDetails(@RequestBody CurrencyRequest requestCurrency) {
+        CurrencyDetails currencyDetails = currencyService.getCurrencyDetails(requestCurrency);
+        
+        return ResponseEntity.status(HttpStatus.CREATED)
+                             .header("info", "data created")
+                             .body(currencyDetails);
+    }
+}

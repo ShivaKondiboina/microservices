@@ -1,0 +1,39 @@
+package com.currencyService.CurrencyService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.currencyService.CurrencyDetails.CurrencyDetails;
+import com.currencyService.CurrencyRepository.CurrencyRepository;
+import com.currencyService.CurrencyRequest.CurrencyRequest;
+import com.currencyService.feign.feignclientcode;
+@Service
+public class CurrencyService {
+	@Autowired
+	CurrencyRepository currencyRepository;
+	
+	@Autowired
+	feignclientcode feignclientcode;
+
+	public CurrencyDetails save(CurrencyRequest currencyRequest) {
+// double ConcersionRate=86.78;
+		CurrencyDetails currencyDetails=new CurrencyDetails();
+		currencyDetails.setFromcurrency(currencyRequest.getFromCurrency());
+		currencyDetails.setTocurrency(currencyRequest.getToCurrency());
+		currencyDetails.setQuantity(currencyRequest.getQuantity());
+		
+		double conversionRate=feignclientcode.getDetails(currencyRequest.getFromCurrency(),currencyRequest.getToCurrency()).getBody();
+        double totalAmount= conversionRate*currencyRequest.getQuantity();
+		currencyDetails.setTotalAmount(totalAmount);
+		
+		currencyDetails.setConversionRate(conversionRate);
+		
+		
+		
+		
+			
+
+		return  currencyRepository.save(currencyDetails);
+	}
+
+}

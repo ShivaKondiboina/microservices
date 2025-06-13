@@ -1,0 +1,16 @@
+package com.currencyService.feign;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@FeignClient(name="currency-ehange")
+public interface feignclientcode {
+	@GetMapping("/api/vi/from/{fromCurrency\"}/to/{toCurrency}")
+	ResponseEntity<Double>getDetails(@PathVariable("fromCurrency") String fromCurrency,
+			                          @PathVariable("toCurrency")String TCurrency);
+	
+	
+
+}

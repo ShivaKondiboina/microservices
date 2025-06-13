@@ -1,0 +1,5 @@
+package com.currencyService.CurrencyDetails;
+
+public class CurrencyDetails {
+
+}
